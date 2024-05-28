@@ -100,23 +100,12 @@
   const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
 
   let lastChecked;
-  let totalCheck = 0;
 
   function handleCheck(e) {
     let inBetween  = false;
 
-    if(!this.checked){
-      if(totalCheck === 0){
-        return;
-      }
-      totalCheck--;
-    }else{
-      totalCheck++;
-    }
-
-    if(totalCheck >= 1 && this.checked){
+    if(e.shiftKey && this.checked){
       checkboxes.forEach(checkbox =>{
-        console.log(checkbox);
         if(checkbox === this || checkbox === lastChecked){
           inBetween = !inBetween;
         }
